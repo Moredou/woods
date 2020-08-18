@@ -1,0 +1,395 @@
+openapi: 3.0.0
+info:
+  title: WOODS API DOCUMENTS
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:8080'
+    description: localhost
+paths:
+  /signup:
+    post:
+      summary: ''
+      operationId: post-signup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type:
+                      - string
+                      - object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      created_at:
+                        type: string
+                      avatar_url:
+                        type: string
+                      phone_number:
+                        type: string
+                  token:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type:
+                - object
+                - string
+              properties:
+                first_name:
+                  type: string
+                last-name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  first_name: Tom
+                  last_name: Zhang
+                  email: example@gmail.com
+                  password: '123456'
+      description: user sign up
+  /login:
+    post:
+      summary: ''
+      operationId: post-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      created_at:
+                        type: string
+                      avater_url:
+                        type: string
+                      phone_number:
+                        type: string
+                      gender:
+                        type: string
+                  token:
+                    type: string
+      description: user login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  email: string@gmail.com
+                  password: string
+  /user/1:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-user
+      description: get user info
+    parameters: []
+    patch:
+      summary: ''
+      operationId: patch-user-1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  avatar_url:
+                    type: string
+                  phone_number:
+                    type: string
+                  street1:
+                    type: string
+                  street2:
+                    type: string
+                  city:
+                    type: string
+                  zipcode:
+                    type: string
+                  state:
+                    type: string
+                  country:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    first_name: string
+                    last_name: string
+                    avatar_url: string
+                    phone_number: string
+                    street1: string
+                    street2: string
+                    city: string
+                    zipcode: string
+                    state: string
+                    country: string
+      description: update user info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                avatar_url:
+                  type: string
+                phone_number:
+                  type: string
+                street1:
+                  type: string
+                street2:
+                  type: string
+                city:
+                  type: string
+                zipcode:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  first_name: Tom
+                  last_name: Zhang
+                  avatar_url: string
+                  phone_number: '1231231212'
+                  street1: 25 engel street
+                  street2: ''
+                  city: hicksville
+                  zipcode: '11801'
+                  state: New York
+                  country: US
+        description: user info mation
+  /post:
+    post:
+      summary: ''
+      operationId: post-post
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  product_type:
+                    type: string
+                  state:
+                    type: string
+                  provider:
+                    type: string
+                  created_at:
+                    type: string
+                  categories:
+                    type: string
+                  price:
+                    type: string
+                  quantity:
+                    type: string
+                  description:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                product_type:
+                  type: string
+                state:
+                  type: string
+                provider:
+                  type: string
+                created_at:
+                  type: string
+                categories:
+                  type: array
+                  items: {}
+                price:
+                  type: string
+                quantity:
+                  type: string
+                description:
+                  type: string
+                type:
+                  type: string
+        description: ''
+      description: |
+        post a requirement
+  /post/1:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  product_type:
+                    type: string
+                  categories:
+                    type: array
+                    items: {}
+                  price:
+                    type: string
+                  state:
+                    type: string
+                  quantity:
+                    type: string
+                  ceated_at:
+                    type: string
+                  description:
+                    type: string
+                  provider:
+                    type: string
+                  type:
+                    type: string
+      operationId: get-post-1
+      description: get post by id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+  /posts:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-posts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  price:
+                    type: string
+                  provider:
+                    type: string
+                  created_at:
+                    type: string
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+        avatar_url:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        zipcode:
+          type: string
+        business_type:
+          type: string
+        company_info:
+          type: string
+        points:
+          type: number
+    Post:
+      title: Post
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        price:
+          type: string
+        provider:
+          type: string
+        quantity:
+          type: string
+        categories:
+          type: array
+          items: {}
+        product_type:
+          type: string
+  securitySchemes:
+    API Key - 1:
+      type: http
+      scheme: basic
